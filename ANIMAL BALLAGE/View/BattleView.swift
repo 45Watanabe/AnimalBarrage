@@ -18,6 +18,7 @@ struct BattleView: View {
                     if !gvm.isOnline {
                         Button(action: {gvm.changeMode(Mode: "home")
                             gvm.resetAll()
+                            gvm.nowBGM = gvm.audio.stopMusic(now: gvm.nowBGM)
                         }){
                             Image(systemName: "escape")
                                 .resizable()
