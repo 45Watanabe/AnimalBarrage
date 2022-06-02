@@ -21,8 +21,8 @@ class FirebaseModel: ObservableObject {
     func startOnlineBattle() {
         getAllData()
         md.changeMode(Mode: "checkOnline")
-        md.select = ""
         md.isOnline = true
+        md.select = ""
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.md.changeMode(Mode: "battle")
             self.md.startCount()
@@ -55,7 +55,7 @@ class FirebaseModel: ObservableObject {
                 print("Error starting game", error?.localizedDescription)
                 // 0.5秒毎に検索をかける
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.searchPlayer(userId: userId, roomPass: roomPass)
+                    if self.md.select=="matchNow"{self.searchPlayer(userId: userId, roomPass: roomPass)}
                 }
                 
             }
@@ -79,7 +79,7 @@ class FirebaseModel: ObservableObject {
                     print("Error starting game", error?.localizedDescription)
                     // 0.5秒まいにリサーチ
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.detectionInRoom(userId: userId, roomPass: roomPass)
+                        if self.md.select=="matchNow"{self.detectionInRoom(userId: userId, roomPass: roomPass)}
                     }
                     return
                 }

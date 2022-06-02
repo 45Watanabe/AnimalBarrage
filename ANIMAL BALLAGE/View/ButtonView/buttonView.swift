@@ -31,6 +31,7 @@ class buttonViewModel: ObservableObject {
         case "鳥":btns = (num:1,x1:1,y1:4,x2:0,y2:0,x3:0,y3:0)
         case "狼":btns = (num:1,x1:2,y1:4,x2:0,y2:0,x3:0,y3:0)
         case "リス":btns = (num:3,x1:4,y1:4,x2:4,y2:4,x3:4,y3:4)
+            n = 2
         case "人間":btns = (num:1,x1:4,y1:2,x2:0,y2:0,x3:0,y3:0)
         case "駝鳥":btns = (num:2,x1:3,y1:7,x2:4,y2:7,x3:0,y3:0)
         case "梟":btns = (num:2,x1:3,y1:3,x2:4,y2:4,x3:0,y3:0)
@@ -103,9 +104,9 @@ class buttonViewModel: ObservableObject {
                 btns.y3 = Int.random(in: 1...7)
                 n = 0
             }else{
-                if pushed == 1 {btns.x1 = 0}
-                if pushed == 2 {btns.x2 = 0}
-                if pushed == 3 {btns.x3 = 0}
+                if pushed == 1 {btns.x1 = -2}
+                if pushed == 2 {btns.x2 = -2}
+                if pushed == 3 {btns.x3 = -2}
                 n+=1
             }
         }
